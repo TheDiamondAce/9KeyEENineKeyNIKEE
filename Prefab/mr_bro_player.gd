@@ -1,14 +1,26 @@
 extends CharacterBody2D
 class_name KeypadCharacter
 
-# Physics
+@export_category("Physics")
 @export var max_speed: float = 400.0
 @export var acceleration: float = 2000.0
 @export var friction: float = 1500.0
 
-# hardware
+@export_category("Hardware")
 @export var activation_threshold: int = 2
 
+@export_category("Action")
+@export var dashCooldownTimer := 1.5
+@export var dashSpeed : float = 1500
+
+@export_category("Misc")
+@onready var animSprite = $tempSpites
+
+var isDashing
+var lastDirection
+var dashDuration = 1.5
+var dashTimer = 0
+var dashCooldown :float
 # mapping physical numpad keys to a cartesian grid
 
 # grid:
@@ -28,15 +40,31 @@ const KEY_MATRIX = {
 }
 
 func _physics_process(delta: float) -> void:
+	if isDashing:
+		var direction = lastDirection
+		velocity =direction * dashSpeed
+		animSprite.play("Dash")
+	if !isDashing:
+		animSprite.play("Idle")
+		
+	if dashCooldown > 0:
+		#print(dashCooldown)
+		dashCooldown -=delta
+	if dashCooldown <=0:
+		print("Dash Ready!")
+	if dashTimer > 0:
+		dashTimer -= delta
+	if dashTimer <=0 && isDashing:
+		end_dash()
 	# poll the custom hardware array
 	var input_dir := _get_tilt_vector()
 	
 	# integrate velocity
-	if input_dir != Vector2.ZERO:
+	if input_dir != Vector2.ZERO && !isDashing:
 		velocity = velocity.move_toward(input_dir * max_speed, acceleration * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-		print("velocity: ", velocity)
+		#print("velocity: ", velocity)
 		
 	move_and_slide()
 
@@ -50,5 +78,25 @@ func _get_tilt_vector() -> Vector2:
 			active_keys += 1
 	if active_keys < activation_threshold:
 		return Vector2.ZERO
-	
+	if active_keys == 9:
+		start_dash()
+		
+		
+	lastDirection = raw_direction.normalized()
 	return raw_direction.normalized()
+
+func start_dash() -> void:
+	if dashCooldown <=0:
+		dashTimer = dashDuration
+		isDashing = true
+		print("dashed!")
+		
+func end_dash() -> void:
+	dashTimer = 0
+	isDashing = false
+	if dashCooldown <=0:
+		dashCooldown = dashCooldownTimer
+	
+	
+
+	
