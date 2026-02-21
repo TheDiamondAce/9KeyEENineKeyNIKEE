@@ -8,6 +8,11 @@ from twilio.twiml.voice_response import VoiceResponse, Gather
 from dotenv import load_dotenv
 load_dotenv()
 
+MISSION_MP3 = "https://drive.google.com/uc?export=download&id=1cZdcQKPDC-zAUN82W558ovNzV-IebJr7"
+ACCEPTED_MP3 = "https://drive.google.com/uc?export=download&id=12fdQIfzrN7B78xYSFCDxL-PcL5ObNqwE"
+INVAILD_MP3 = "https://drive.google.com/uc?export=download&id=10ZfcgwDQyEHJGH2qI9CfIdkpQbK0vhwc"
+DECLINED_MP3 = "https://drive.google.com/uc?export=download&id=1WAylzyW_eIt31Hf9AnguenFCew5sagNp"
+
 app = FastAPI()
 
 # Hackathon-friendly in-memory state store
@@ -89,16 +94,17 @@ async def twilio_voice():
     """
     vr = VoiceResponse()
 
-    vr.say("Mission control here.", voice="alice")
-    vr.say("Press 1 to accept the mission. Press 2 to decline.", voice="alice")
+    #vr.say("Mission control here.", voice="alice")
+    #vr.play(MISSION_MP3)
+    #vr.say("Press 1 to accept the mission. Press 2 to decline.", voice="alice")
 
     gather = Gather(
         num_digits=1,
         action="/twilio/choice",
         method="POST",
-        timeout=7,
+        timeout=15,
     )
-    gather.say("Press 1 to accept. Press 2 to decline.", voice="alice")
+    gather.play(MISSION_MP3)
     vr.append(gather)
 
     vr.say("No input received. Goodbye.", voice="alice")
@@ -120,16 +126,19 @@ async def twilio_choice(
 
     if Digits == "1":
         CALL_STATE[CallSid]["choice"] = "accepted"
-        msg = "Mission accepted. Return to the game for your next objective."
+        msg = ACCEPTED_MP3
+        #msg = "Mission accepted. Your brother Antonio will be waiting"
     elif Digits == "2":
         CALL_STATE[CallSid]["choice"] = "declined"
-        msg = "Mission declined. Returning control to the game."
+        msg = DECLINED_MP3 
+        #msg = "Mission declined. Returning control to the game. Rest. In. Peace."
     else:
         CALL_STATE[CallSid]["choice"] = "invalid"
-        msg = "Invalid input. Goodbye."
+        msg = INVAILD_MP3
 
     vr = VoiceResponse()
-    vr.say(msg, voice="alice")
+    vr.play(msg)
+    #vr.say(msg, voice="alice")
     vr.hangup()
 
     return PlainTextResponse(str(vr), media_type="application/xml")
