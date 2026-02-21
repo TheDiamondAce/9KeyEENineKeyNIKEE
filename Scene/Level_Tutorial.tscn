@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://befahgxeupgg" path="res://Prefab/MrBroPlayer.tscn" id="1_sje4l"]
 [ext_resource type="Script" uid="uid://c2is73w8cw4l6" path="res://Prefab/mr_bro_player.gd" id="2_kfbaf"]
+[ext_resource type="Texture2D" uid="uid://blc8p7bnbd0xi" path="res://Images/tempBG.jpg" id="3_kfbaf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sje4l"]
 
@@ -11,6 +12,8 @@ size = Vector2(69, 67)
 [node name="LevelTutorial" type="Node2D" unique_id=1277897442]
 
 [node name="Player" parent="." unique_id=1951922814 instance=ExtResource("1_sje4l")]
+z_index = 2
+motion_mode = 1
 script = ExtResource("2_kfbaf")
 
 [node name="Sprite" type="Sprite2D" parent="Player" unique_id=363631565]
@@ -23,3 +26,6 @@ position = Vector2(24.5, -23.5)
 shape = SubResource("RectangleShape2D_kfbaf")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1968423718]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=854023638]
+texture = ExtResource("3_kfbaf")
