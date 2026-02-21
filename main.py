@@ -5,6 +5,8 @@ from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.responses import PlainTextResponse
 from twilio.rest import Client
 from twilio.twiml.voice_response import VoiceResponse, Gather
+from dotenv import load_dotenv
+load_dotenv()
 
 app = FastAPI()
 
