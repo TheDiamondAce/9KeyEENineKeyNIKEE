@@ -16,15 +16,15 @@ class_name KeypadCharacter
 # 4 5 6
 # 7 8 9
 const KEY_MATRIX = {
-	KEY_1: Vector2(-1, -1),
+	KEY_1: Vector2(1, -1),
 	KEY_2: Vector2(0, -1), 
-	KEY_3: Vector2(1, -1), 
-	KEY_4: Vector2(-1, 0), 
+	KEY_3: Vector2(-1, -1), 
+	KEY_4: Vector2(1, 0), 
 	KEY_5: Vector2(0, 0), 
-	KEY_6: Vector2(1, 0), 
-	KEY_7: Vector2(-1, 1), 
+	KEY_6: Vector2(-1, 0), 
+	KEY_7: Vector2(1, 1), 
 	KEY_8: Vector2(0, 1), 
-	KEY_9: Vector2(1, 1)
+	KEY_9: Vector2(-1, 1)
 }
 
 func _physics_process(delta: float) -> void:
@@ -37,7 +37,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		print("velocity: ", velocity)
-		move_and_slide()
+		
+	move_and_slide()
 
 func _get_tilt_vector() -> Vector2:
 	var raw_direction := Vector2.ZERO
