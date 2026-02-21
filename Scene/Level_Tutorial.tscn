@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c2is73w8cw4l6" path="res://Prefab/mr_bro_player.gd" id="2_kfbaf"]
 [ext_resource type="Texture2D" uid="uid://blc8p7bnbd0xi" path="res://Images/tempBG.jpg" id="3_kfbaf"]
 [ext_resource type="Texture2D" uid="uid://iqhm2g0klo84" path="res://Images/gil8a4vnvaebvv1bnud048o1e1-331db7358a9cdb7eb28d4961c2daf506.png" id="3_rmdu8"]
-[ext_resource type="Texture2D" uid="uid://vms3o3f3a7d0" path="res://Images/square-png-25131.png" id="4_6oj0q"]
+[ext_resource type="Texture2D" uid="uid://tx5lq4cmlht6" path="res://Images/Scanned Documents 2_page-0001.jpg" id="6_6oj0q"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sje4l"]
 
@@ -21,10 +21,7 @@ animations = [{
 "name": &"Dash",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_6oj0q")
-}],
+"frames": [],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
@@ -55,3 +52,14 @@ animation = &"Idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=854023638]
 texture = ExtResource("3_kfbaf")
+
+[node name="ScannedDocuments2Page0001" type="Sprite2D" parent="." unique_id=109963016]
+position = Vector2(-702, -807)
+rotation = 4.712389
+scale = Vector2(1.2141623, 1.2881777)
+texture = ExtResource("6_6oj0q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ScannedDocuments2Page0001" unique_id=351740839]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScannedDocuments2Page0001/StaticBody2D" unique_id=723383416]
+polygon = PackedVector2Array(669.5974, -1473.3992, -442.28027, -1450.1106, -417.57184, -1013.059, -1548.3926, -994.42804, -1518.7427, -2464.7222, -517.22906, -2525.2727, -502.404, -2121.6018, 952.9204, -2098.313, 928.21204, 1359.2845, 255.32007, 1448.5579, 260.26178, 1960.9097, 789.02136, 2064.1563, 743.72266, 2689.0698, -242.96582, 2637.0586, -327.79797, 1936.8445, 46.122375, 1941.5024, 6.588928, 1462.5311, -392.03983, 1420.6115, -462.04694, 2341.292, -1907.4879, 2359.9229, -1962.67, 452.57733, -457.10526, 401.34216, -447.22192, 1110.0952, 634.1821, 1096.1221, 658.8905, -1459.426, -202.60883, -1257.5906, -98.00995, 555.8239, -302.266, 551.1662, -347.56473, -172.33649, -2111.7441, 15.525818, -2157.0427, 2585.047, -327.79797, 2538.4697, -342.62302, 2881.5898, 1267.5405, 2900.221, 1486.6216, 44.248535, 1531.0967, -3352.7983, -2041.7368, -3216.1711, -2231.168, -111.00952, -342.62305, -609.388, -242.96585, -454.12988)
