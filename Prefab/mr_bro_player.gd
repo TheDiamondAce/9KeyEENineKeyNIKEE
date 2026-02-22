@@ -14,7 +14,7 @@ class_name KeypadCharacter
 @export var dashSpeed : float = 1500
 
 @export_category("Misc")
-@onready var animSprite = $tempSpites
+@export var animSprite : AnimatedSprite2D
 
 var isDashing
 var lastDirection
@@ -39,7 +39,17 @@ const KEY_MATRIX = {
 	KEY_9: Vector2(-1, 1)
 }
 
+
 func _physics_process(delta: float) -> void:
+	if velocity.x <0:
+		animSprite.flip_h = true
+	if velocity.x > 0:
+		animSprite.flip_h = false
+	if velocity != Vector2.ZERO:
+		animSprite.play("Idle")
+	else: 
+		animSprite.play("Run")
+		
 	if isDashing:
 		var direction = lastDirection
 		velocity =direction * dashSpeed
@@ -90,7 +100,7 @@ func _get_tilt_vector() -> Vector2:
 		
 		
 	lastDirection = raw_direction.normalized()
-	if abs(lastDirection.x) > abs(lastDirection.y):
+	"""if abs(lastDirection.x) > abs(lastDirection.y):
 	# Closest to X-axis (Horizontal)
 		if lastDirection.x > 0:
 			dirString = "_Right"
@@ -104,7 +114,7 @@ func _get_tilt_vector() -> Vector2:
 			dirString = "_Up"
 		
 	combString = actionString+dirString
-	animSprite.play(combString)
+	animSprite.play(combString)"""
 	return raw_direction.normalized()
 
 func start_dash() -> void:
