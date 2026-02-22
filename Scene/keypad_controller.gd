@@ -12,9 +12,10 @@ func _input(event):
 	if event is InputEventKey and not event.echo:
 		var dir = EspListener.esp_direction
 		if manual == false:
+			
 			if dir == 'UP':
 				flip = true
-			if dir == "DOWN":
+			if dir == "Down":
 				flip = false
 		if Input.is_action_pressed("flip"):
 			flip =!flip
@@ -39,27 +40,8 @@ func _input(event):
 
 				# Send fake one instead
 				fake_key(remap[event.keycode], event.pressed)
-		else: if !flip:
-			var remap = {
-				KEY_1: KEY_1,
-				KEY_2: KEY_2,
-				KEY_3: KEY_3,
-				KEY_4: KEY_4,
-				KEY_5: KEY_5,
-				KEY_6: KEY_6,
-				KEY_7: KEY_7,
-				KEY_8: KEY_8,
-				KEY_9: KEY_9,
-				
-			}
-			if event.keycode in remap:
-				# Stop original key
-				get_viewport().set_input_as_handled()
-
-				# Send fake one instead
-				fake_key(remap[event.keycode], event.pressed)
 		
-		if event.keycode == KEY_Y:
+		if event.keycode == KEY_Y && flip:
 			print("yoooo")
 		
 		
