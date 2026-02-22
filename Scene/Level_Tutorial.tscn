@@ -65,6 +65,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="TileSet" id="TileSet_c5kbw"]
+
 [node name="LevelTutorial" type="Node2D" unique_id=1277897442]
 
 [node name="Cop" type="CharacterBody2D" parent="." unique_id=808096224 node_paths=PackedStringArray("animSprite")]
@@ -81,7 +83,7 @@ position = Vector2(-1.9999999, 281.99997)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_sjvvu")
 animation = &"Run"
-frame_progress = 0.22376198
+frame_progress = 0.5460825
 
 [node name="Player" parent="." unique_id=1951922814 node_paths=PackedStringArray("animSprite") instance=ExtResource("1_sje4l")]
 z_index = 2
@@ -123,3 +125,8 @@ polygon = PackedVector2Array(669.5974, -1473.3992, -442.28027, -1450.1106, -417.
 
 [node name="ESPListener" type="Node" parent="ScannedDocuments2Page0001/StaticBody2D/CollisionPolygon2D" unique_id=2063646275]
 script = ExtResource("6_ie4f8")
+
+[node name="Background" type="Node2D" parent="." unique_id=466211914]
+
+[node name="Prison" type="TileMapLayer" parent="Background" unique_id=811680844]
+tile_set = SubResource("TileSet_c5kbw")
