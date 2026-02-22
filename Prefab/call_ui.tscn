@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ltd2dk3w55sd"]
+
+[node name="CallUI" type="Control" unique_id=1756140192]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=588100923]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

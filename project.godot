@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="9KeyEENineKeyEENIKEE"
-run/main_scene="uid://gsspwgm8pl5b"
+run/main_scene="uid://btmdjb8pr4ceg"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 

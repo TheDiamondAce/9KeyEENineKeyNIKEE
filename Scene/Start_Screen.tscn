@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://btmdjb8pr4ceg"]
+
+[ext_resource type="FontFile" uid="uid://c8fwlkhcv14mx" path="res://the-godfather-font/TheGodfather-rgRK.ttf" id="1_53uoq"]
+[ext_resource type="Script" uid="uid://b7vvvvw14ot5v" path="res://Scene/start_screen.gd" id="1_rt21h"]
+[ext_resource type="FontFile" uid="uid://1kdyqk4ifisv" path="res://malegroth-font/MalegrothRegular-w1ygz.otf" id="2_tyd03"]
+
+[sub_resource type="Theme" id="Theme_tyd03"]
+default_font_size = 140
+
+[sub_resource type="Theme" id="Theme_rt21h"]
+
+[node name="StartScreen" type="Control" unique_id=1492532090]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rt21h")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=1635157256]
+layout_mode = 0
+offset_right = 1158.0
+offset_bottom = 189.0
+theme = SubResource("Theme_tyd03")
+theme_override_colors/default_color = Color(0.49136907, 0.8585765, 0.72119176, 1)
+theme_override_colors/selection_color = Color(0.06986245, 0.3330845, 0.359473, 0.8)
+theme_override_colors/font_outline_color = Color(0, 0.380171, 0.15019217, 1)
+theme_override_fonts/normal_font = ExtResource("1_53uoq")
+text = "MafiaFlip"
+tab_size = 3
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=737833459]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 463.0
+offset_right = 745.0
+offset_bottom = 580.0
+theme = SubResource("Theme_rt21h")
+theme_override_colors/font_color = Color(0.3254902, 0.8745098, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("2_tyd03")
+theme_override_font_sizes/font_size = 80
+text = "Start"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
