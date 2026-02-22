@@ -1,6 +1,6 @@
 extends Node
 var flip = false
-var manual = false
+@export var manual = false
 var a_is_one := true
 func fake_key(key, is_pressed):
 	var ev = InputEventKey.new()
