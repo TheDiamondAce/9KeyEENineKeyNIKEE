@@ -1,7 +1,6 @@
 extends Node
 var flip = false
-@export var manual = false
-@onready var http: HTTPRequest = $"../HTTPRequest"
+@export var manual = true
 var a_is_one := true
 
 
