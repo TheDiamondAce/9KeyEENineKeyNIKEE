@@ -1,5 +1,5 @@
 extends Node
-
+var esp_direction = "Up"
 var udp := PacketPeerUDP.new()
 
 func _ready():
@@ -13,4 +13,6 @@ func _process(_delta):
 	while udp.get_available_packet_count() > 0:
 		var packet = udp.get_packet()
 		var msg = packet.get_string_from_utf8()
+		esp_direction = msg
 		print("From ESP32:", msg)
+		emit_signal(msg)

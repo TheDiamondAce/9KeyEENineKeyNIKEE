@@ -1,18 +1,14 @@
 [gd_scene format=3 uid="uid://gsspwgm8pl5b"]
 
-[ext_resource type="Script" uid="uid://dgv2xgy7u3066" path="res://Script/Cop.gd" id="1_ie4f8"]
+[ext_resource type="Script" path="res://Scene/Cop.gd" id="1_ie4f8"]
 [ext_resource type="PackedScene" uid="uid://befahgxeupgg" path="res://Prefab/MrBroPlayer.tscn" id="1_sje4l"]
-[ext_resource type="Script" uid="uid://c2is73w8cw4l6" path="res://Script/mr_bro_player.gd" id="2_kfbaf"]
+[ext_resource type="Script" uid="uid://c2is73w8cw4l6" path="res://Prefab/mr_bro_player.gd" id="2_kfbaf"]
 [ext_resource type="Texture2D" uid="uid://bwajm0ni0d4bl" path="res://assets/playeridle.png" id="3_k0h1s"]
 [ext_resource type="Texture2D" uid="uid://blc8p7bnbd0xi" path="res://Images/tempBG.jpg" id="3_kfbaf"]
 [ext_resource type="Texture2D" uid="uid://tx5lq4cmlht6" path="res://Images/Scanned Documents 2_page-0001.jpg" id="6_6oj0q"]
-[ext_resource type="Script" uid="uid://c8s23h6vo343e" path="res://Script/esp_listener.gd" id="6_ie4f8"]
 [ext_resource type="Texture2D" uid="uid://bd1bad6ca81ij" path="res://assets/playerrun1.png" id="8_mh8p8"]
 [ext_resource type="Texture2D" uid="uid://4ijwlvskned8" path="res://assets/playerrun2.png" id="9_hs4jh"]
-[ext_resource type="PackedScene" uid="uid://ltd2dk3w55sd" path="res://Prefab/call_ui.tscn" id="13_sjvvu"]
-[ext_resource type="Texture2D" uid="uid://cv5lsdf6cpq62" path="res://assets/phonebooth.png" id="14_q6r5d"]
 [ext_resource type="Texture2D" uid="uid://davnoesq8ys0h" path="res://assets/cop2idle.png" id="20_hs4jh"]
-[ext_resource type="Texture2D" uid="uid://d25xbt0ge24s2" path="res://assets/table1.png" id="21_vwoq0"]
 [ext_resource type="Texture2D" uid="uid://bn1piaju0y30f" path="res://assets/cop2run1.png" id="22_fwhwa"]
 [ext_resource type="Texture2D" uid="uid://bjmkj6sa120su" path="res://assets/cop2run2.png" id="23_nbuvo"]
 
@@ -41,8 +37,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sje4l"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbaf"]
-size = Vector2(112, 156)
+size = Vector2(69, 67)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ie4f8"]
 animations = [{
@@ -70,6 +68,8 @@ animations = [{
 
 [node name="LevelTutorial" type="Node2D" unique_id=1277897442]
 
+[node name="ESPListener" type="Node" parent="." unique_id=2063646275]
+
 [node name="Cop" type="CharacterBody2D" parent="." unique_id=808096224 node_paths=PackedStringArray("animSprite")]
 script = ExtResource("1_ie4f8")
 animSprite = NodePath("tempSprite")
@@ -90,19 +90,25 @@ frame_progress = 0.5460825
 z_index = 2
 motion_mode = 1
 script = ExtResource("2_kfbaf")
-animSprite = NodePath("tempCollider/tempSpites")
+animSprite = NodePath("tempSpites")
+
+[node name="Sprite" type="Sprite2D" parent="Player" unique_id=363631565]
+position = Vector2(24.499998, -23.5)
+scale = Vector2(69, 67)
+texture = SubResource("PlaceholderTexture2D_sje4l")
 
 [node name="tempCollider" type="CollisionShape2D" parent="Player" unique_id=124422249]
-position = Vector2(0, -1)
+position = Vector2(24.5, -23.5)
 shape = SubResource("RectangleShape2D_kfbaf")
 
-[node name="tempSpites" type="AnimatedSprite2D" parent="Player/tempCollider" unique_id=1597798055]
-position = Vector2(-6, 3.9999995)
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1968423718]
+
+[node name="tempSpites" type="AnimatedSprite2D" parent="Player" unique_id=1597798055]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ie4f8")
 animation = &"Run"
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1968423718]
+[node name="Node" type="Node" parent="Player" unique_id=864158164]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=854023638]
 visible = false
@@ -120,27 +126,7 @@ texture = ExtResource("6_6oj0q")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScannedDocuments2Page0001/StaticBody2D" unique_id=723383416]
 polygon = PackedVector2Array(669.5974, -1473.3992, -442.28027, -1450.1106, -417.57184, -1013.059, -1548.3926, -994.42804, -1518.7427, -2464.7222, -517.22906, -2525.2727, -502.404, -2121.6018, 952.9204, -2098.313, 928.21204, 1359.2845, 255.32007, 1448.5579, 260.26178, 1960.9097, 789.02136, 2064.1563, 743.72266, 2689.0698, -242.96582, 2637.0586, -327.79797, 1936.8445, 46.122375, 1941.5024, 6.588928, 1462.5311, -392.03983, 1420.6115, -462.04694, 2341.292, -1907.4879, 2359.9229, -1962.67, 452.57733, -457.10526, 401.34216, -447.22192, 1110.0952, 634.1821, 1096.1221, 658.8905, -1459.426, -202.60883, -1257.5906, -98.00995, 555.8239, -302.266, 551.1662, -347.56473, -172.33649, -2111.7441, 15.525818, -2157.0427, 2585.047, -327.79797, 2538.4697, -342.62302, 2881.5898, 1267.5405, 2900.221, 1486.6216, 44.248535, 1531.0967, -3352.7983, -2041.7368, -3216.1711, -2231.168, -111.00952, -342.62305, -609.388, -242.96585, -454.12988)
 
-[node name="ESPListener" type="Node" parent="ScannedDocuments2Page0001/StaticBody2D/CollisionPolygon2D" unique_id=2063646275]
-script = ExtResource("6_ie4f8")
-
 [node name="Background" type="Node2D" parent="." unique_id=466211914]
 
 [node name="Prison" type="TileMapLayer" parent="Background" unique_id=811680844]
-enabled = false
 tile_set = SubResource("TileSet_c5kbw")
-
-[node name="CallUI" parent="." unique_id=1756140192 instance=ExtResource("13_sjvvu")]
-
-[node name="CallArea" type="Area2D" parent="." unique_id=1144701338]
-
-[node name="Phonebooth" type="Sprite2D" parent="CallArea" unique_id=1637817846]
-z_index = 1
-texture_filter = 1
-position = Vector2(2788.0002, -944)
-scale = Vector2(5, 5)
-texture = ExtResource("14_q6r5d")
-
-[node name="Table1" type="Sprite2D" parent="CallArea" unique_id=928889670]
-position = Vector2(2774, -853)
-scale = Vector2(0.29999998, 0.29999998)
-texture = ExtResource("21_vwoq0")
