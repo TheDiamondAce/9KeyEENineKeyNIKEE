@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name KeypadCharacter
 
 @export_category("Physics")
 @export var max_speed: float = 400.0
@@ -45,9 +46,9 @@ func _physics_process(delta: float) -> void:
 	if velocity.x > 0:
 		animSprite.flip_h = false
 	if velocity != Vector2.ZERO:
-		animSprite.play("Idle")
-	else: 
 		animSprite.play("Run")
+	else: 
+		animSprite.play("Idle")
 		
 	if isDashing:
 		var direction = lastDirection
@@ -126,7 +127,3 @@ func end_dash() -> void:
 	isDashing = false
 	if dashCooldown <=0:
 		dashCooldown = dashCooldownTimer
-	
-	
-
-	
