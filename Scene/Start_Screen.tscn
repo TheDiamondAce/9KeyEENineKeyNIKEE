@@ -3,6 +3,13 @@
 [ext_resource type="FontFile" uid="uid://c8fwlkhcv14mx" path="res://the-godfather-font/TheGodfather-rgRK.ttf" id="1_53uoq"]
 [ext_resource type="Script" uid="uid://b7vvvvw14ot5v" path="res://Scene/start_screen.gd" id="1_rt21h"]
 [ext_resource type="FontFile" uid="uid://1kdyqk4ifisv" path="res://malegroth-font/MalegrothRegular-w1ygz.otf" id="2_tyd03"]
+[ext_resource type="Texture2D" uid="uid://bvnm3btq28sdo" path="res://assets/coprun1.png" id="4_v2som"]
+[ext_resource type="Texture2D" uid="uid://4ijwlvskned8" path="res://assets/playerrun2.png" id="5_2ma6j"]
+[ext_resource type="Texture2D" uid="uid://davnoesq8ys0h" path="res://assets/cop2idle.png" id="6_2sxpj"]
+[ext_resource type="Texture2D" uid="uid://b0gixaw27gc3h" path="res://assets/ground.png" id="8_wtib3"]
+[ext_resource type="Texture2D" uid="uid://d14b050df31at" path="res://assets/officedoorblue.png" id="9_47o6m"]
+[ext_resource type="AudioStream" uid="uid://fgc51wnnl1ac" path="res://geoffharvey-mafioso-388478.mp3" id="9_v2som"]
+[ext_resource type="Script" uid="uid://bcv77f720cst1" path="res://Scene/startMusic.gd" id="10_2ma6j"]
 
 [sub_resource type="Theme" id="Theme_tyd03"]
 default_font_size = 140
@@ -42,5 +49,36 @@ theme_override_colors/font_color = Color(0.3254902, 0.8745098, 0.8745098, 1)
 theme_override_fonts/font = ExtResource("2_tyd03")
 theme_override_font_sizes/font_size = 80
 text = "Start"
+
+[node name="Coprun1" type="Sprite2D" parent="." unique_id=832530314]
+position = Vector2(268, 294.00006)
+scale = Vector2(0.42592594, 0.4259259)
+texture = ExtResource("4_v2som")
+
+[node name="Playerrun2" type="Sprite2D" parent="." unique_id=1345988303]
+position = Vector2(902, 291)
+scale = Vector2(0.45738637, 0.45738637)
+texture = ExtResource("5_2ma6j")
+
+[node name="Cop2Idle" type="Sprite2D" parent="." unique_id=1383846996]
+position = Vector2(543.99994, 330.00003)
+scale = Vector2(0.16313933, 0.16313936)
+texture = ExtResource("6_2sxpj")
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=106358783]
+z_index = -1
+position = Vector2(578, 692.75)
+scale = Vector2(4.6947193, 2.2128713)
+texture = ExtResource("8_wtib3")
+
+[node name="Officedoorblue" type="Sprite2D" parent="." unique_id=557377696]
+z_index = -2
+position = Vector2(1420, 413.24994)
+scale = Vector2(6.449275, 1.3730009)
+texture = ExtResource("9_47o6m")
+
+[node name="StartScreenMusic" type="AudioStreamPlayer2D" parent="." unique_id=176761764]
+stream = ExtResource("9_v2som")
+script = ExtResource("10_2ma6j")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

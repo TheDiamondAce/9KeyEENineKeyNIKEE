@@ -39,10 +39,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sje4l"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbaf"]
-size = Vector2(69, 67)
+size = Vector2(112, 156)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ie4f8"]
 animations = [{
@@ -90,23 +88,19 @@ frame_progress = 0.5460825
 z_index = 2
 motion_mode = 1
 script = ExtResource("2_kfbaf")
-animSprite = NodePath("tempSpites")
-
-[node name="Sprite" type="Sprite2D" parent="Player" unique_id=363631565]
-position = Vector2(24.499998, -23.5)
-scale = Vector2(69, 67)
-texture = SubResource("PlaceholderTexture2D_sje4l")
+animSprite = NodePath("tempCollider/tempSpites")
 
 [node name="tempCollider" type="CollisionShape2D" parent="Player" unique_id=124422249]
-position = Vector2(24.5, -23.5)
+position = Vector2(229, 0)
 shape = SubResource("RectangleShape2D_kfbaf")
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1968423718]
-
-[node name="tempSpites" type="AnimatedSprite2D" parent="Player" unique_id=1597798055]
+[node name="tempSpites" type="AnimatedSprite2D" parent="Player/tempCollider" unique_id=1597798055]
+position = Vector2(-6, 3.9999995)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ie4f8")
 animation = &"Run"
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1968423718]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=854023638]
 visible = false
