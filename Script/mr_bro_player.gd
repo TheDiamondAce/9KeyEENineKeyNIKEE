@@ -40,6 +40,8 @@ const KEY_MATRIX = {
 
 
 func _physics_process(delta: float) -> void:
+	if KeypadController.flip == true:
+		velocity = Vector2.ZERO
 	if velocity.x <0:
 		animSprite.flip_h = true
 	if velocity.x > 0:
@@ -126,6 +128,7 @@ func end_dash() -> void:
 	isDashing = false
 	if dashCooldown <=0:
 		dashCooldown = dashCooldownTimer
+		
 	
 	
 

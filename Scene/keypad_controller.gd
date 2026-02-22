@@ -1,5 +1,6 @@
 extends Node
-
+var flip = false
+var manual = false
 var a_is_one := true
 func fake_key(key, is_pressed):
 	var ev = InputEventKey.new()
@@ -10,7 +11,17 @@ func fake_key(key, is_pressed):
 func _input(event):
 	if event is InputEventKey and not event.echo:
 		var dir = EspListener.esp_direction
-		if(dir == 'UP'):
+		if manual == false:
+			if dir == 'UP':
+				flip = true
+			if dir == "DOWN":
+				flip = false
+		if Input.is_action_pressed("flip"):
+			flip =!flip
+			print("ON the flip side")
+			
+		if flip:
+					
 			var remap = {
 				KEY_1: KEY_Y,
 				KEY_2: KEY_U,
@@ -28,8 +39,12 @@ func _input(event):
 
 				# Send fake one instead
 				fake_key(remap[event.keycode], event.pressed)
-				
+		else: if !flip:
+			var remap = {}
+		
 		if event.keycode == KEY_Y:
 			print("yoooo")
+		
+		
 func _ready():
 	print("Remapper loaded")
