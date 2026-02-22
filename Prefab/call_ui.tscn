@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://ltd2dk3w55sd"]
 
-[node name="CallUI" type="Control" unique_id=1756140192]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[ext_resource type="Script" uid="uid://bk16cpgprpq75" path="res://Prefab/call_ui.gd" id="1_bkhej"]
+
+[node name="CallUI" type="CanvasLayer" unique_id=1299137339]
+script = ExtResource("1_bkhej")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=588100923]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1143.0
+offset_bottom = 660.0
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=192007985]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="VBoxContainer" unique_id=111094677]
+layout_mode = 2
+
+[node name="Hint" type="Label" parent="VBoxContainer" unique_id=839613037]
+layout_mode = 2

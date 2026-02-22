@@ -1,7 +1,10 @@
 extends Node
 var flip = false
 @export var manual = false
+@onready var http: HTTPRequest = $"../HTTPRequest"
 var a_is_one := true
+
+
 func fake_key(key, is_pressed):
 	var ev = InputEventKey.new()
 	ev.keycode = key
@@ -12,13 +15,13 @@ func _input(event):
 	if event is InputEventKey and not event.echo:
 		var dir = EspListener.esp_direction
 		if manual == false:
-			
 			if dir == 'UP':
 				flip = true
-			if dir == "Down":
+			if dir == "DOWN":
 				flip = false
 		if Input.is_action_pressed("flip"):
 			flip =!flip
+			print(flip)
 			print("ON the flip side")
 			
 		if flip:
@@ -41,9 +44,3 @@ func _input(event):
 				# Send fake one instead
 				fake_key(remap[event.keycode], event.pressed)
 		
-		if event.keycode == KEY_Y && flip:
-			print("yoooo")
-		
-		
-func _ready():
-	print("Remapper loaded")
