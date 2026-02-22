@@ -83,6 +83,23 @@ sprite_frames = SubResource("SpriteFrames_sjvvu")
 animation = &"Run"
 frame_progress = 0.5460825
 
+[node name="Cop2" type="CharacterBody2D" parent="." unique_id=105844618]
+position = Vector2(984, -496)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cop2" unique_id=1498910866]
+position = Vector2(3.5, 282)
+shape = SubResource("RectangleShape2D_c5kbw")
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Cop2" unique_id=541556505]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Cop2" unique_id=32892620]
+
 [node name="Player" parent="." unique_id=1951922814 node_paths=PackedStringArray("animSprite") instance=ExtResource("1_sje4l")]
 z_index = 2
 motion_mode = 1
