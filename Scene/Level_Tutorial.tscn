@@ -56,11 +56,20 @@ animations = [{
 "texture": ExtResource("8_mh8p8")
 }, {
 "duration": 1.0,
+"texture": ExtResource("3_k0h1s")
+}, {
+"duration": 1.0,
 "texture": ExtResource("9_hs4jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k0h1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mh8p8")
 }],
 "loop": true,
 "name": &"Run",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="TileSet" id="TileSet_c5kbw"]
@@ -121,6 +130,7 @@ shape = SubResource("RectangleShape2D_kfbaf")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ie4f8")
 animation = &"Run"
+frame_progress = 0.9305248
 
 [node name="Node" type="Node" parent="Player" unique_id=864158164]
 

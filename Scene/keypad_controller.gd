@@ -40,7 +40,24 @@ func _input(event):
 				# Send fake one instead
 				fake_key(remap[event.keycode], event.pressed)
 		else: if !flip:
-			var remap = {}
+			var remap = {
+				KEY_1: KEY_1,
+				KEY_2: KEY_2,
+				KEY_3: KEY_3,
+				KEY_4: KEY_4,
+				KEY_5: KEY_5,
+				KEY_6: KEY_6,
+				KEY_7: KEY_7,
+				KEY_8: KEY_8,
+				KEY_9: KEY_9,
+				
+			}
+			if event.keycode in remap:
+				# Stop original key
+				get_viewport().set_input_as_handled()
+
+				# Send fake one instead
+				fake_key(remap[event.keycode], event.pressed)
 		
 		if event.keycode == KEY_Y:
 			print("yoooo")

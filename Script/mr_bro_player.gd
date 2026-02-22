@@ -40,6 +40,12 @@ const KEY_MATRIX = {
 
 
 func _physics_process(delta: float) -> void:
+	if velocity.length() != 0:
+		animSprite.play("Run")
+		print("Running!")
+	if velocity.length() == 0:
+		animSprite.play("Idle")
+		print("Standing")
 	if KeypadController.flip == true:
 		velocity = Vector2.ZERO
 	if velocity.x <0:
