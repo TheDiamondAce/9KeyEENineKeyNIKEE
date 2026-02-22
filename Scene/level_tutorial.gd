@@ -11,7 +11,7 @@ func _ready():
 	http.request_completed.connect(_on_done)
 
 func _unhandled_input(event):
-	if KeypadController.flip:
+	if KeypadController.flip && KeypadController.isCall:
 		print("CALLING!")
 		start_call()
 

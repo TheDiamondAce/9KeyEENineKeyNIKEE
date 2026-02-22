@@ -2,6 +2,7 @@ extends Node
 var flip = false
 @export var manual = true
 var a_is_one := true
+var isCall = false
 
 
 func fake_key(key, is_pressed):
@@ -42,4 +43,10 @@ func _input(event):
 
 				# Send fake one instead
 				fake_key(remap[event.keycode], event.pressed)
+				
+		if event.keycode == KEY_K and !event.is_echo():
+			isCall = true
+		else: 
+			isCall = false
+				
 		
