@@ -83,15 +83,17 @@ size = Vector2(108, 162)
 
 [node name="LevelTutorial" type="Node2D" unique_id=1277897442]
 
-[node name="ESPListener" type="Node" parent="." unique_id=2063646275]
+[node name="Node2D" type="Node2D" parent="." unique_id=11519176]
+position = Vector2(984, -496)
 
-[node name="Cop" type="CharacterBody2D" parent="." unique_id=808096224]
+[node name="Cop" type="CharacterBody2D" parent="Node2D" unique_id=808096224]
+position = Vector2(-984, 496)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cop" unique_id=687668524]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop" unique_id=687668524]
 position = Vector2(3.5, 282)
 shape = SubResource("RectangleShape2D_c5kbw")
 
-[node name="tempSprite" type="AnimatedSprite2D" parent="Cop" unique_id=1458074631]
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop" unique_id=1458074631]
 z_index = 1
 position = Vector2(-1.9999999, 281.99997)
 scale = Vector2(0.2, 0.2)
@@ -99,10 +101,9 @@ sprite_frames = SubResource("SpriteFrames_sjvvu")
 animation = &"Run"
 frame_progress = 0.5460825
 
-[node name="Cop2" type="CharacterBody2D" parent="." unique_id=105844618]
-position = Vector2(984, -496)
+[node name="Cop2" type="CharacterBody2D" parent="Node2D" unique_id=105844618]
 
-[node name="tempSprite" type="AnimatedSprite2D" parent="Cop2" unique_id=541556505]
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop2" unique_id=541556505]
 z_index = 1
 position = Vector2(-1.9999999, 281.99997)
 scale = Vector2(0.2, 0.2)
@@ -110,14 +111,151 @@ sprite_frames = SubResource("SpriteFrames_sjvvu")
 animation = &"Run"
 frame_progress = 0.5460825
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Cop2" unique_id=32892620]
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cop2" unique_id=32892620]
 
-[node name="LoseBlock" type="Area2D" parent="Cop2" unique_id=669484426]
+[node name="LoseBlock" type="Area2D" parent="Node2D/Cop2" unique_id=669484426]
 script = ExtResource("4_w3yyv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cop2/LoseBlock" unique_id=1468732201]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop2/LoseBlock" unique_id=1468732201]
 position = Vector2(3.5, 282.5)
 shape = SubResource("RectangleShape2D_sjvvu")
+
+[node name="Cop3" type="CharacterBody2D" parent="Node2D" unique_id=493490620]
+position = Vector2(267, -360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop3" unique_id=326375488]
+position = Vector2(3.5, 282)
+shape = SubResource("RectangleShape2D_c5kbw")
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop3" unique_id=881273538]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="Cop4" type="CharacterBody2D" parent="Node2D" unique_id=1981677516]
+position = Vector2(-33, -817)
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop4" unique_id=1651767133]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cop4" unique_id=699379403]
+
+[node name="LoseBlock" type="Area2D" parent="Node2D/Cop4" unique_id=1788067995]
+script = ExtResource("4_w3yyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop4/LoseBlock" unique_id=9474650]
+position = Vector2(3.5, 282.5)
+shape = SubResource("RectangleShape2D_sjvvu")
+
+[node name="Cop5" type="CharacterBody2D" parent="Node2D" unique_id=151511749]
+position = Vector2(267, -1178)
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop5" unique_id=1633791050]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cop5" unique_id=647465440]
+
+[node name="LoseBlock" type="Area2D" parent="Node2D/Cop5" unique_id=982067033]
+script = ExtResource("4_w3yyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop5/LoseBlock" unique_id=467048776]
+position = Vector2(3.5, 282.5)
+shape = SubResource("RectangleShape2D_sjvvu")
+
+[node name="Cop6" type="CharacterBody2D" parent="Node2D" unique_id=904677098]
+position = Vector2(-372, -1523)
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop6" unique_id=644895279]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cop6" unique_id=1420603810]
+
+[node name="LoseBlock" type="Area2D" parent="Node2D/Cop6" unique_id=1875895974]
+script = ExtResource("4_w3yyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop6/LoseBlock" unique_id=478972780]
+position = Vector2(3.5, 282.5)
+shape = SubResource("RectangleShape2D_sjvvu")
+
+[node name="Cop7" type="CharacterBody2D" parent="Node2D" unique_id=1658462584]
+position = Vector2(-1089, -1334)
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop7" unique_id=2058674307]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cop7" unique_id=1554263024]
+
+[node name="LoseBlock" type="Area2D" parent="Node2D/Cop7" unique_id=992955154]
+script = ExtResource("4_w3yyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop7/LoseBlock" unique_id=1891481644]
+position = Vector2(3.5, 282.5)
+shape = SubResource("RectangleShape2D_sjvvu")
+
+[node name="Cop8" type="CharacterBody2D" parent="Node2D" unique_id=790203745]
+position = Vector2(-1928, -1590)
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop8" unique_id=477030899]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cop8" unique_id=1996590417]
+
+[node name="LoseBlock" type="Area2D" parent="Node2D/Cop8" unique_id=1305380663]
+script = ExtResource("4_w3yyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop8/LoseBlock" unique_id=1620388416]
+position = Vector2(3.5, 282.5)
+shape = SubResource("RectangleShape2D_sjvvu")
+
+[node name="Cop9" type="CharacterBody2D" parent="Node2D" unique_id=340071906]
+position = Vector2(-2545, -1368)
+
+[node name="tempSprite" type="AnimatedSprite2D" parent="Node2D/Cop9" unique_id=1587767089]
+z_index = 1
+position = Vector2(-1.9999999, 281.99997)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_sjvvu")
+animation = &"Run"
+frame_progress = 0.5460825
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Cop9" unique_id=1862815398]
+
+[node name="LoseBlock" type="Area2D" parent="Node2D/Cop9" unique_id=1368108728]
+script = ExtResource("4_w3yyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Cop9/LoseBlock" unique_id=1359628099]
+position = Vector2(3.5, 282.5)
+shape = SubResource("RectangleShape2D_sjvvu")
+
+[node name="ESPListener" type="Node" parent="." unique_id=2063646275]
 
 [node name="Player" parent="." unique_id=1951922814 node_paths=PackedStringArray("animSprite") instance=ExtResource("1_sje4l")]
 z_index = 2
@@ -173,4 +311,10 @@ polygon = PackedVector2Array(669.5974, -1473.3992, -442.28027, -1450.1106, -417.
 [node name="Prison" type="TileMapLayer" parent="Background" unique_id=811680844]
 tile_set = SubResource("TileSet_c5kbw")
 
-[connection signal="body_entered" from="Cop2/LoseBlock" to="Cop2/LoseBlock" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Cop2/LoseBlock" to="Node2D/Cop2/LoseBlock" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Cop4/LoseBlock" to="Node2D/Cop4/LoseBlock" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Cop5/LoseBlock" to="Node2D/Cop5/LoseBlock" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Cop6/LoseBlock" to="Node2D/Cop6/LoseBlock" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Cop7/LoseBlock" to="Node2D/Cop7/LoseBlock" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Cop8/LoseBlock" to="Node2D/Cop8/LoseBlock" method="_on_body_entered"]
+[connection signal="body_entered" from="Node2D/Cop9/LoseBlock" to="Node2D/Cop9/LoseBlock" method="_on_body_entered"]
