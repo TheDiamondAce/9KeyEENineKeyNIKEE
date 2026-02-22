@@ -18,7 +18,7 @@ class_name KeypadCharacter
 
 var isDashing
 var lastDirection
-var dashDuration = 1.5
+var dashDuration = 0.51
 var dashTimer = 0
 var dashCooldown :float
 # mapping physical numpad keys to a cartesian grid
@@ -71,11 +71,18 @@ func _physics_process(delta: float) -> void:
 func _get_tilt_vector() -> Vector2:
 	var raw_direction := Vector2.ZERO
 	var active_keys := 0
+	var dirString : String
+	var actionString : String
+	var combString
 	
 	for key in KEY_MATRIX:
 		if Input.is_physical_key_pressed(key):
 			raw_direction += KEY_MATRIX[key]
 			active_keys += 1
+			actionString = "Run"
+		else: 
+			actionString = "Idle"
+						
 	if active_keys < activation_threshold:
 		return Vector2.ZERO
 	if active_keys == 9:
@@ -83,6 +90,21 @@ func _get_tilt_vector() -> Vector2:
 		
 		
 	lastDirection = raw_direction.normalized()
+	if abs(lastDirection.x) > abs(lastDirection.y):
+	# Closest to X-axis (Horizontal)
+		if lastDirection.x > 0:
+			dirString = "_Right"
+		else:
+			dirString = "_Left"
+	else:
+	# Closest to Y-axis (Vertical)
+		if lastDirection.y > 0:
+			dirString = "_Down"
+		else:
+			dirString = "_Up"
+		
+	combString = actionString+dirString
+	animSprite.play(combString)
 	return raw_direction.normalized()
 
 func start_dash() -> void:
