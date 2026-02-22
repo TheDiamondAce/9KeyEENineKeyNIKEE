@@ -14,6 +14,6 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 print("Bridge running...")
 
 while True:
-    line = ser.readline().decode().strip()
+    line = ser.readline().decode(errors="ignore").strip()
     print("ESP32:", line)
     sock.sendto(line.encode(), (UDP_IP, UDP_PORT))

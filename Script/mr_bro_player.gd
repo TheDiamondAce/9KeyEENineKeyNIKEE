@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export_category("Physics")
-@export var max_speed: float = 400.0
+@export var max_speed: float = 1500.0
 @export var acceleration: float = 2000.0
-@export var friction: float = 1500.0
+@export var friction: float = 3000.0
 
 @export_category("Hardware")
 @export var activation_threshold: int = 2
