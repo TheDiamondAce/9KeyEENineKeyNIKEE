@@ -1,4 +1,4 @@
-# Miboard flip
+# Mafia Flip (f.t. Miboard flip 2)
 
 Have you ever wantee to use your keyboard as a mouse? No? it's because you're weird. Normal ppl would.
 
