@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bd1bad6ca81ij" path="res://assets/playerrun1.png" id="8_mh8p8"]
 [ext_resource type="Texture2D" uid="uid://4ijwlvskned8" path="res://assets/playerrun2.png" id="9_hs4jh"]
 [ext_resource type="PackedScene" uid="uid://ltd2dk3w55sd" path="res://Prefab/call_ui.tscn" id="13_sjvvu"]
+[ext_resource type="Texture2D" uid="uid://cv5lsdf6cpq62" path="res://assets/phonebooth.png" id="14_q6r5d"]
 [ext_resource type="Texture2D" uid="uid://davnoesq8ys0h" path="res://assets/cop2idle.png" id="20_hs4jh"]
+[ext_resource type="Texture2D" uid="uid://d25xbt0ge24s2" path="res://assets/table1.png" id="21_vwoq0"]
 [ext_resource type="Texture2D" uid="uid://bn1piaju0y30f" path="res://assets/cop2run1.png" id="22_fwhwa"]
 [ext_resource type="Texture2D" uid="uid://bjmkj6sa120su" path="res://assets/cop2run2.png" id="23_nbuvo"]
 
@@ -91,7 +93,7 @@ script = ExtResource("2_kfbaf")
 animSprite = NodePath("tempCollider/tempSpites")
 
 [node name="tempCollider" type="CollisionShape2D" parent="Player" unique_id=124422249]
-position = Vector2(229, 0)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_kfbaf")
 
 [node name="tempSpites" type="AnimatedSprite2D" parent="Player/tempCollider" unique_id=1597798055]
@@ -128,3 +130,17 @@ enabled = false
 tile_set = SubResource("TileSet_c5kbw")
 
 [node name="CallUI" parent="." unique_id=1756140192 instance=ExtResource("13_sjvvu")]
+
+[node name="CallArea" type="Area2D" parent="." unique_id=1144701338]
+
+[node name="Phonebooth" type="Sprite2D" parent="CallArea" unique_id=1637817846]
+z_index = 1
+texture_filter = 1
+position = Vector2(2788.0002, -944)
+scale = Vector2(5, 5)
+texture = ExtResource("14_q6r5d")
+
+[node name="Table1" type="Sprite2D" parent="CallArea" unique_id=928889670]
+position = Vector2(2774, -853)
+scale = Vector2(0.29999998, 0.29999998)
+texture = ExtResource("21_vwoq0")
