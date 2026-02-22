@@ -58,10 +58,9 @@ func _physics_process(delta: float) -> void:
 		animSprite.play("Idle")
 		
 	if dashCooldown > 0:
-		#print(dashCooldown)
 		dashCooldown -=delta
-	if dashCooldown <=0:
-		print("Dash Ready!")
+	#if dashCooldown <=0:
+		#print("Dash Ready!")
 	if dashTimer > 0:
 		dashTimer -= delta
 	if dashTimer <=0 && isDashing:
