@@ -3,10 +3,10 @@ extends Area2D
 @onready var lose_timer = $LoseTimer
 var player_inside = false
 
-func _on_body_entered(body):
+func _on_Area2D_body_entered(body):
+	print("something thuched me")
 	if body.name == "Player":
-		player_inside = true
-		lose_timer.start()
+		lose_game()
 
 func _on_body_exited(body):
 	if body.name == "Player":

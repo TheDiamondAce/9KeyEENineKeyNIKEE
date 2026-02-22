@@ -139,8 +139,9 @@ func end_dash() -> void:
 	
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("player"):
+		print("lost")
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -148,4 +149,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_lose_timer_timeout() -> void:
+	pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://gsspwgm8pl5b"]
 
-[ext_resource type="Script" uid="uid://d0cmuy4cqg030" path="res://Scene/level_tutorial.gd" id="1_c5kbw"]
 [ext_resource type="PackedScene" uid="uid://befahgxeupgg" path="res://Prefab/MrBroPlayer.tscn" id="1_sje4l"]
 [ext_resource type="Script" uid="uid://c2is73w8cw4l6" path="res://Script/mr_bro_player.gd" id="2_kfbaf"]
 [ext_resource type="Texture2D" uid="uid://bwajm0ni0d4bl" path="res://assets/playeridle.png" id="3_k0h1s"]
 [ext_resource type="Texture2D" uid="uid://blc8p7bnbd0xi" path="res://Images/tempBG.jpg" id="3_kfbaf"]
+[ext_resource type="Script" uid="uid://btorakaapxp4l" path="res://Scene/lose_block.gd" id="4_w3yyv"]
 [ext_resource type="Texture2D" uid="uid://tx5lq4cmlht6" path="res://Images/Scanned Documents 2_page-0001.jpg" id="6_6oj0q"]
 [ext_resource type="Texture2D" uid="uid://bd1bad6ca81ij" path="res://assets/playerrun1.png" id="8_mh8p8"]
 [ext_resource type="Texture2D" uid="uid://4ijwlvskned8" path="res://assets/playerrun2.png" id="9_hs4jh"]
@@ -36,6 +36,9 @@ animations = [{
 "name": &"Run",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjvvu"]
+size = Vector2(111, 159)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sje4l"]
 
@@ -73,6 +76,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46leg"]
+size = Vector2(108, 162)
+
 [sub_resource type="TileSet" id="TileSet_c5kbw"]
 
 [node name="LevelTutorial" type="Node2D" unique_id=1277897442]
@@ -96,10 +102,6 @@ frame_progress = 0.5460825
 [node name="Cop2" type="CharacterBody2D" parent="." unique_id=105844618]
 position = Vector2(984, -496)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cop2" unique_id=1498910866]
-position = Vector2(3.5, 282)
-shape = SubResource("RectangleShape2D_c5kbw")
-
 [node name="tempSprite" type="AnimatedSprite2D" parent="Cop2" unique_id=541556505]
 z_index = 1
 position = Vector2(-1.9999999, 281.99997)
@@ -110,14 +112,18 @@ frame_progress = 0.5460825
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Cop2" unique_id=32892620]
 
+[node name="LoseBlock" type="Area2D" parent="Cop2" unique_id=669484426]
+script = ExtResource("4_w3yyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cop2/LoseBlock" unique_id=1468732201]
+position = Vector2(3.5, 282.5)
+shape = SubResource("RectangleShape2D_sjvvu")
+
 [node name="Player" parent="." unique_id=1951922814 node_paths=PackedStringArray("animSprite") instance=ExtResource("1_sje4l")]
 z_index = 2
 motion_mode = 1
 script = ExtResource("2_kfbaf")
 animSprite = NodePath("tempSpites")
-
-[node name="HttpCall" type="HTTPRequest" parent="Player" unique_id=403735805]
-script = ExtResource("1_c5kbw")
 
 [node name="Sprite" type="Sprite2D" parent="Player" unique_id=363631565]
 position = Vector2(24.499998, -23.5)
@@ -136,13 +142,23 @@ sprite_frames = SubResource("SpriteFrames_ie4f8")
 animation = &"Run"
 frame_progress = 0.9305248
 
+[node name="Node" type="Node" parent="Player" unique_id=864158164]
+
+[node name="Area2D" type="Area2D" parent="Player" unique_id=1190475035]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D" unique_id=1813694167]
+position = Vector2(-6, -7)
+shape = SubResource("RectangleShape2D_46leg")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Player" unique_id=871229284]
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=854023638]
 visible = false
 position = Vector2(-66, -73)
 texture = ExtResource("3_kfbaf")
 
-[node name="ScannedDocuments2Page0001" type="Sprite2D" parent="." unique_id=109963016]
-position = Vector2(-506, -701)
+[node name="ScannedDocuments2Page0001" type="Sprite2D" parent="." unique_id=109963016 groups=["Player"]]
+position = Vector2(-522, -690)
 rotation = 4.712389
 scale = Vector2(1.2141623, 1.2881777)
 texture = ExtResource("6_6oj0q")
@@ -150,9 +166,11 @@ texture = ExtResource("6_6oj0q")
 [node name="StaticBody2D" type="StaticBody2D" parent="ScannedDocuments2Page0001" unique_id=351740839]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScannedDocuments2Page0001/StaticBody2D" unique_id=723383416]
-polygon = PackedVector2Array(669.5974, -1473.3992, -442.28027, -1450.1106, -417.57184, -1013.059, -1548.3926, -994.42804, -1518.7427, -2464.7222, -517.22906, -2525.2727, -502.404, -2121.6018, 952.9204, -2098.313, 928.21204, 1359.2845, 255.32007, 1448.5579, 260.26178, 1960.9097, 789.02136, 2064.1563, 743.72266, 2689.0698, -242.96582, 2637.0586, -327.79797, 1936.8445, 46.122375, 1941.5024, 6.588928, 1462.5311, -392.03983, 1420.6115, -462.04694, 2341.292, -1907.4879, 2359.9229, -1962.67, 452.57733, -541.93744, 402.11844, -457.10526, 401.34216, -447.22192, 1110.0952, 634.1821, 1096.1221, 658.8905, -1459.426, -202.60883, -1257.5906, -98.00995, 555.8239, -302.266, 551.1662, -347.56473, -172.33649, -2111.7441, 15.525818, -2157.0427, 2585.047, -327.79797, 2538.4697, -342.62302, 2881.5898, 1267.5405, 2900.221, 1486.6216, 44.248535, 1531.0967, -3352.7983, -2041.7368, -3216.1711, -2231.168, -111.00952, -342.62305, -609.388, -242.96585, -454.12988)
+polygon = PackedVector2Array(669.5974, -1473.3992, -442.28027, -1450.1106, -417.57184, -1013.059, -1548.3926, -994.42804, -1518.7427, -2464.7222, -517.22906, -2525.2727, -502.404, -2121.6018, 952.9204, -2098.313, 928.21204, 1359.2845, 255.32007, 1448.5579, 260.26178, 1960.9097, 789.02136, 2064.1563, 743.72266, 2689.0698, -242.96582, 2637.0586, -327.79797, 1936.8445, 46.122375, 1941.5024, 6.588928, 1462.5311, -392.03983, 1420.6115, -462.04694, 2341.292, -1907.4879, 2359.9229, -1962.67, 452.57733, -789.0912, 412.63983, -457.10526, 401.34216, -447.22192, 1110.0952, 634.1821, 1096.1221, 658.8905, -1459.426, -202.60883, -1257.5906, -98.00995, 555.8239, -302.266, 551.1662, -347.56473, -172.33649, -2111.7441, 15.525818, -2157.0427, 2585.047, -327.79797, 2538.4697, -342.62302, 2881.5898, 1267.5405, 2900.221, 1486.6216, 44.248535, 1531.0967, -3352.7983, -2041.7368, -3216.1711, -2231.168, -111.00952, -342.62305, -609.388, -242.96585, -454.12988)
 
 [node name="Background" type="Node2D" parent="." unique_id=466211914]
 
 [node name="Prison" type="TileMapLayer" parent="Background" unique_id=811680844]
 tile_set = SubResource("TileSet_c5kbw")
+
+[connection signal="body_entered" from="Cop2/LoseBlock" to="Cop2/LoseBlock" method="_on_body_entered"]
